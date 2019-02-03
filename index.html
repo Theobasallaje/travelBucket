@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Project Tester</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assests/css/style.css">
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWFOCmzmYYtlBFfCa2lBED1utZnrz4N5I&libraries=places"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+</head>
+
+<body>
+    <!-- Title -->
+    <!-- <h1>Travel-Bucket</h1> -->
+
+    <!-- Input Form -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <h1 class="display-4">Travel MAP Test!</h1>
+        </div>
+    </div>
+    <form id='form' style="display:inline-block; width: 90%;">
+        <label id='label' for="target">Enter Places</label>
+        <!-- <input class="form-control" id='place' type="text" placeholder="Place Search" /><br> -->
+        <input class="form-control" id='place' type="text" placeholder="Place Search" /><input id="add-place" value="Add Place" type="submit"><br>
+    </form>
+
+    <div class="container register">
+        <form>
+            <!--Registration Form-->
+            <h1>Register</h1>
+            <p>Please complete the form to create an account</p>
+            <hr>
+            <label for="fname-reg"><b>First Name</b></label>
+            <input id="fname-reg" class="clear-field" type="text" placeholder="Beyonce" required>
+            <label for="lname-reg"><b>Last Name</b></label>
+            <input id="lname-reg" class="clear-field" type="text" placeholder="Knowles" required>
+            <label for="email-reg"><b>Email</b></label>
+            <input id="email-reg" class="clear-field" type="email" placeholder="Enter Email" required>
+            <label for="pw-reg"><b>Password</b></label>
+            <input id="pw-reg" class="clear-field" type="password" placeholder="Enter Password" required>
+            <label for="pw-reg-confirm"><b>Confirm Password</b></label>
+            <input id="pw-reg-confirm" class="clear-field" type="password" placeholder="Confirm Password" required>
+            <hr>
+            <p>By creating an account, you agree to our Terms & Privacy.</p>
+            <button type="submit" id="register-btn">Register</button>
+        </form>
+        <div>
+            <p>Already have an account? <a href="#">Sign In</a>.</p>
+        </div>
+    </div>
+
+    <div class="container login">
+        <form>
+            <!--Log In Form-->
+            <h1>Log In</h1>
+            <hr>
+            <label for="email-login"><b>Email</b></label>
+            <input id="email-login" class="clear-field" type="text" placeholder="Enter Email" required>
+            <label for="pw-login"><b>Password</b></label>
+            <input id="pw-login" class="clear-field" type="password" placeholder="Enter Password" required>
+            <hr>
+
+            <div class="container">
+                <label>
+                    <input type="checkbox" checked="checked">Remember Me
+                </label>
+                <button type="submit" id="login-btn">Log In</button>
+                <span><a href="#">Forgot password</a>?</span>
+            </div>
+        </form>
+    </div>
+    <!--Log Out-->
+    <hr>
+    <div class="header container logout">
+        <button type="button" id="logout">Log Out</button>
+    </div>
+
+
+    </div>
+
+    <hr>
+    <div id="content">
+        <div id=infoContainer>
+            <div id="destName">
+                <p></p>
+            </div>
+            <div id="map"></div>
+            <div id="info">
+                <div id="destTemp">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div id="listContainer">
+            <div id="places"></div>
+
+            <div id="details"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="./assests/javascript/script.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+

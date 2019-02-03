@@ -1,0 +1,84 @@
+/* Anh's Styles */
+@media (min-width: 576px){
+    .jumbotron {
+        padding: 1rem 0rem;
+        background-color:  #008b8b;
+        width: 90%;
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        font-family: Tahoma;
+        
+    }
+      }
+    .jumbotron{
+        background: transparent;
+        display: inline-block;
+        color: #008b8b;
+        font-weight: bold;
+        border-radius: 25px;
+        
+    }
+      h5{
+        border-radius: 5px;
+        text-align: left;
+        background:  #008b8b;
+        color:white;
+        padding-left: 1%;
+        padding-bottom: 1%;
+        padding-top: 1%;
+        margin-bottom: 0;
+      }
+      table{
+          text-align: left;
+      }
+      form{
+          text-align: left;
+          padding-top: 1%;
+          padding-bottom: 1%;
+      }
+      #map {
+        height: 260px;
+        width: 450px;
+        /* display: inline-block; */
+    }
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color:black;
+        text-align: center;
+      }
+
+/* Theo's Styles */
+#places{
+    margin-bottom: 60px;
+
+}
+
+.listItem{
+    cursor: pointer;
+}
+
+#info{
+    text-align: left;
+    width: 450px;
+}
+
+#destName{
+    width: 450px;
+}
+
+#destName, #destTemp{
+    text-align: center;
+}
+
+#content{
+    display: flex;
+    margin-left: 25vw;
+}
+
+#listContainer{
+    margin-left: 15vw;
+}
