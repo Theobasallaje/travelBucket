@@ -118,18 +118,18 @@ let temperatureConversion = (currentWeather) => {
     return fahrenheit;
 }
 
-    //listener for login state
-    auth.onAuthStateChanged(function (user) {
-        alert('onAuth');
-        loggedinUser = user;
-        //store input location from user
- 
-    });
+//listener for login state
+auth.onAuthStateChanged(function (user) {
+    alert('onAuth');
+    loggedinUser = user;
+    //store input location from user
 
-    // database.ref(`/${userUid}`).on('child_added', function (snap) {
-    //     place = snap.val();
-    //     console.log(place);
-    // });
+});
+
+// database.ref(`/${userUid}`).on('child_added', function (snap) {
+//     place = snap.val();
+//     console.log(place);
+// });
 
 //click events
 $("#add-place").on("click", function (event) {
@@ -181,11 +181,17 @@ $("#add-place").on("click", function (event) {
                 placesArray.push(place);
                 database.ref(`/${userUid}`).update({ "places": placesArray });
                 console.log(placesArray[i]);
-                for (var i=0; i<placesArray.length; i++){
+                for (var i = 0; i < placesArray.length; i++) {
                     $("#places").append(paragraph);
                 }
             }
             $("#place").val("");
+            for (var i = 0; i < placesArray.length; i++) {
+                if (placesArray[i] === "") {
+                    placesArray.splice(i, 1);
+                }
+            }
+            console.log(placesArray);
         })
 
     } else {
@@ -232,15 +238,23 @@ $("#add-place").on("click", function (event) {
 });
 
 $(document.body).on("click", ".checkbox", function () {
+
     var blockId = $(this).attr("data-cityid");
+    console.log(placesArray);
 
     var placeNumber = $(this).attr("data-place");
 
     $(".city-" + blockId).remove();
-    placesArray.pop($(".item-" + placeNumber));
+
+    let placeToRemove = $(this).parent().find('.placeText').text();
+    var index = (placesArray.indexOf(placeToRemove)) + 1;
+    if (index !== -1) placesArray.splice(index, 1);
+    // placesArray.pop($(".item-" + placeNumber));
     // $(`#${place.value}`).empty();
 
     console.log(placesArray);
+    console.log(index);
+    console.log({ placeToRemove });
 
 });
 
