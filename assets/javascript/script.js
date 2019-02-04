@@ -134,6 +134,7 @@ auth.onAuthStateChanged(function (user) {
 
 //click events
 $("#add-place").on("click", function (event) {
+    isDelete = false;
     event.preventDefault();
     //var place = $("#place").val().trim();
     // $.each(names, function(i, el){
@@ -185,7 +186,6 @@ $("#add-place").on("click", function (event) {
                     console.log({ isDelete });
                     placesArray.push(place);
                     database.ref(`/${userUid}`).update({ "places": placesArray });
-                    isDelete = false;
                     // if (isDelete = false) {
                     //     console.log({isDelete});
                     //     placesArray.push(place);
@@ -227,7 +227,8 @@ $("#add-place").on("click", function (event) {
     var button = $("<button>");
     button.attr("data-cityid", placeCount);
     button.addClass("checkbox");
-    button.text("X");
+    button.addClass("btn btn-danger");
+    button.append('<i class="fas fa-trash-alt"></i>');
 
     paragraph = paragraph.prepend(button);
     paragraph.append(span);
