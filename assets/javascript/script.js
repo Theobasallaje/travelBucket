@@ -88,6 +88,7 @@ google.maps.event.addDomListener(window, "load", initAutocomplete);
 //global variables 
 var placeCount = 0;
 var details = $("#details");
+var isDelete = false;
 // var place;
 var placesArray = [];
 
@@ -173,26 +174,37 @@ $("#add-place").on("click", function (event) {
         let userUid = loggedinUser.uid;
         //listener for value changes in firebase
         database.ref(`/${userUid}`).on('value', function (snap) {
-            placesArray = snap.val().places;
-            console.log(placesArray);
-            console.log(typeof placesArray);
-            //only update array for user to firebase if user added a new item
-            if (!placesArray.includes(place)) {
-                placesArray.push(place);
-                database.ref(`/${userUid}`).update({ "places": placesArray });
-                console.log(placesArray[i]);
+            console.log({isDelete});
+            if (!isDelete) {
+                placesArray = snap.val().places;
+                console.log(placesArray);
+                console.log(typeof placesArray);
+                //only update array for user to firebase if user added a new item
+                console.log({ isDelete });
+                if (!placesArray.includes(place)) {
+                    console.log({ isDelete });
+                    placesArray.push(place);
+                    database.ref(`/${userUid}`).update({ "places": placesArray });
+                    isDelete = false;
+                    // if (isDelete = false) {
+                    //     console.log({isDelete});
+                    //     placesArray.push(place);
+                    //     database.ref(`/${userUid}`).update({ "places": placesArray });
+                    // }
+                    console.log(placesArray[i]);
+                    for (var i = 0; i < placesArray.length; i++) {
+                        $("#places").append(paragraph);
+                    }
+                }
+                $("#place").val("");
                 for (var i = 0; i < placesArray.length; i++) {
-                    $("#places").append(paragraph);
-                }
-            }
-            $("#place").val("");
-            for (var i = 0; i < placesArray.length; i++) {
-                if (placesArray[i] === "") {
-                    placesArray.splice(i, 1);
+                    if (placesArray[i] === "") {
+                        placesArray.splice(i, 1);
+                    }
                 }
             }
             console.log(placesArray);
-        })
+        });
 
     } else {
         // alert('Please sign in');
@@ -239,6 +251,8 @@ $("#add-place").on("click", function (event) {
 
 $(document.body).on("click", ".checkbox", function () {
 
+    isDelete = true;
+
     let userUid = loggedinUser.uid;
 
     var blockId = $(this).attr("data-cityid");
@@ -261,6 +275,8 @@ $(document.body).on("click", ".checkbox", function () {
     console.log({ placeToRemove });
 
 });
+
+// isDelete = false;
 
 // $(".listItem").on("click", function(){
 //     place = $(this).val().trim();
