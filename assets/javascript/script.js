@@ -122,6 +122,9 @@ let temperatureConversion = (currentWeather) => {
 //listener for login state
 auth.onAuthStateChanged(function (user) {
     alert('onAuth');
+    // for (var i = 0; i < placesArray.length; i++) {
+    //     $("#places").append(paragraph);
+    // }
     loggedinUser = user;
     //store input location from user
 
@@ -194,6 +197,7 @@ $("#add-place").on("click", function (event) {
                     console.log(placesArray[i]);
                     for (var i = 0; i < placesArray.length; i++) {
                         $("#places").append(paragraph);
+                        console.log(paragraph);
                     }
                 }
                 $("#place").val("");
