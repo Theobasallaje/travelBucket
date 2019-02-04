@@ -239,6 +239,8 @@ $("#add-place").on("click", function (event) {
 
 $(document.body).on("click", ".checkbox", function () {
 
+    let userUid = loggedinUser.uid;
+
     var blockId = $(this).attr("data-cityid");
     console.log(placesArray);
 
@@ -247,8 +249,10 @@ $(document.body).on("click", ".checkbox", function () {
     $(".city-" + blockId).remove();
 
     let placeToRemove = $(this).parent().find('.placeText').text();
-    var index = (placesArray.indexOf(placeToRemove)) + 1;
+    var index = placesArray.indexOf(placeToRemove);
     if (index !== -1) placesArray.splice(index, 1);
+    placesArray.splice(0, 0, "");
+    database.ref(`/${userUid}`).update({ "places": placesArray });
     // placesArray.pop($(".item-" + placeNumber));
     // $(`#${place.value}`).empty();
 
